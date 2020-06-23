@@ -1,0 +1,5 @@
+#NewsList {
+    display: flex;
+    Flex-wrap: wrap;
+    justify-content: space-between;
+}

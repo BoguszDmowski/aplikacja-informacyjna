@@ -1,0 +1,8 @@
+.HobbyPage {
+    padding: 26px;
+}
+
+.HobbyPage label {
+    width:100px;
+    display: inline-block;
+}

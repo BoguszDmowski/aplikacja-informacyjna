@@ -1,0 +1,6 @@
+#NewsList .ui.card:first-child {
+    margin-top: 1em;
+}
+#NewsList .ui.card:last-child {
+    margin-bottom: 1em;
+}

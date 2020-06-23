@@ -1,0 +1,13 @@
+footer {
+height: 100px;
+background: #1b1c1d;
+color: rgba(255,255,255,.9);
+position: fixed;
+bottom: 0;
+width: 100%;
+border: none;
+box-shadow: none;
+/* margin: 1rem 0; */
+padding: 1em 1em;
+border-radius: .28571429rem;
+}
