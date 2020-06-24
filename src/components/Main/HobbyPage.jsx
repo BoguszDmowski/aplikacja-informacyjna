@@ -8,13 +8,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import NewsList from './HomePage/NewsList/NewsList';
 import { Pagination } from 'semantic-ui-react'
 
-const PaginationExamplePagination = (results, onPageChange) => (
-    <Pagination
-    defaultActivePage={1}
-    totalPages={Math.ceil(results.totalResults / 20)}
-    // onPageChange={this.onPageChange}
-/>
-)
 
 const sortByOptions = [
     { value: 'publishedAt', name: 'Publish date'},
@@ -38,25 +31,19 @@ const HobbyPage = () => {
     const lang = useContext(LanguageContext);
     const onChange = event => setSortBy(event.target.value);
 
-    const [state, setState] = useState(1);
-    // const [totalPages, setTotalPages] = Math.celi(results.totalResults / 20);
+    const [page, setPage] = useState(1);
 
    
-    const onPageChange= event => setState(event.target.value);
-    
-    // onPageChange = (e, {activePage}) => {
-    //     this.setState({page: activePage})
-    //     console.log(activePage)
-    // } totalPages={Math.ceil(results.totalResults / 20)}
+    const onPageChange= (event, data) => setPage(data.activePage);
 
 
     const fetchArticles = useCallback(() => {
         if (startDate>endDate) return alert('start date is grater than end date');
 
-        fetch(`http://localhost:4000/hobby?language=${lang}&from=${startDate.toISOString()}&to=${endDate.toISOString()}&sortBy=${sortBy}`)
+        fetch(`http://localhost:4000/hobby?language=${lang}&page=${page}&from=${startDate.toISOString()}&to=${endDate.toISOString()}&sortBy=${sortBy}`)
             .then((response) => response.json())
             .then((res) =>setResults(res));
-    }, [startDate, endDate, lang, sortBy]);
+    }, [startDate, endDate, lang, sortBy, page]);
 
     useEffect(() => { fetchArticles(); }, [fetchArticles]);
     
@@ -74,7 +61,7 @@ const HobbyPage = () => {
 
         return () => window.removeEventListener('resize', onResize);
     }, [LayoutType]);
-
+    console.log(results)
     return (
         <div className="HobbyPage">
             <div>
@@ -97,11 +84,14 @@ const HobbyPage = () => {
             </div>
             ) : null}
             {results ? (<NewsList key={`${startDate}${endDate}`} articles={results.articles.sort((a, b) => a.publishedAt > b.publishedAt)} />) : null}
-            {results ? PaginationExamplePagination(<NewsList articles={results.articles} /> ): null}
+            {results && results.totalResults ? <Pagination  
+                    defaultActivePage={1}
+                    totalPages={Math.ceil(results.totalResults / 20)}
+                    onPageChange={onPageChange}/>
+            : null}
+        
         </div>
     );
 };
 export default HobbyPage
 
-//     totalPages={Math.ceil(results.totalResults / 20)}
-// onPageChange={this.onPageChange}

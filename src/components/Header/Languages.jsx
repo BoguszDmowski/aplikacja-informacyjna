@@ -1,7 +1,7 @@
 import React from "react";
 import './Languages.css'
 import { Flag, Segment } from 'semantic-ui-react'
-
+console.log(React.version);
 const languages = ['ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn', 'co', 'cu', 
     'cz', 'de', 'eg', 'fr', 'gb', 'gr', 'hk', 'hu', 'id', 'ie', 'il', 'it', 'jp', 'kr',
     'lt', 'lv', 'ma', 'mx', 'my', 'ng', 'nl', 'no', 'nz', 'ph', 'pl', 'pt', 'ro', 'rs',
@@ -11,7 +11,7 @@ class Languages extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: null,
+            value: "pl",
         }
     }
     onValueChange = (e) => {
@@ -27,11 +27,8 @@ class Languages extends React.Component {
         return( 
             <select value={value} onChange={this.onValueChange}>
                 {languages.map((lang) => (
-                    <option key={lang} value={lang}>{lang}<Flag name={lang}/></option>
-                ))
-                }   
+                    <option key={lang} value={lang}>{lang}<Segment> <Flag name={lang}/> </Segment> </option>))}   
             </select>
- 
         )
     }
 }
