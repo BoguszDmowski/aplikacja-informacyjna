@@ -15,10 +15,11 @@ const sortByOptions = [
     { value: 'popularity', name: 'Popularity'}
 ]
 
-const layoutType = [
-    {value: 'land', name: `Landscape`},
-    {value: 'land', name: `Landscape`}
-]
+const layoutType = {
+    MOBILE: `MOBILE`,
+    LANDSCAPE: `LANDSCAPE`
+};
+
 const getLayoutType = () => {
     if (window.innerWidth < 768) return layoutType.MOBILE;
     else return layoutType.LANDSCAPE;
@@ -47,7 +48,7 @@ const HobbyPage = () => {
 
     useEffect(() => { fetchArticles(); }, [fetchArticles]);
     
-    const [LayoutType, setLayoutType] = useState(getLayoutType());
+    const [layoutType, setLayoutType] = useState(getLayoutType());
     console.log(layoutType);
 
 
@@ -55,12 +56,11 @@ const HobbyPage = () => {
         const onResize = () => {
             const currentLayoutType = getLayoutType();
             if (currentLayoutType !== layoutType) setLayoutType(currentLayoutType);
-            console.log(window.innerWidth)
         };
         window.addEventListener('resize', onResize); 
 
         return () => window.removeEventListener('resize', onResize);
-    }, [LayoutType]);
+    }, [layoutType]);
     console.log(results)
     return (
         <div className="HobbyPage">
@@ -74,14 +74,14 @@ const HobbyPage = () => {
                 <DatePicker selected={endDate} maxDate={(moment().toDate())} onChange={setEndDate} dateFormat="dd-MM-yyyy"/>
             </div>
             {layoutType !== layoutType.MOBILE ? (
-            <div>
-                <label> Sort by:</label>
-                <select onChange={onChange}>
-                    {sortByOptions.map(({value, name}) =>(
-                        <option value={value}> {name}</option>
-                    ))}
-                </select>
-            </div>
+                <div>
+                    <label> Sort by:</label>
+                    <select onChange={onChange}>
+                        {sortByOptions.map(({value, name}) =>(
+                            <option value={value}> {name}</option>
+                        ))}
+                    </select>
+                </div>
             ) : null}
             {results ? (<NewsList key={`${startDate}${endDate}`} articles={results.articles.sort((a, b) => a.publishedAt > b.publishedAt)} />) : null}
             {results && results.totalResults ? <Pagination  

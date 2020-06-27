@@ -5,10 +5,16 @@ import {Link} from 'react-router-dom';
 import Languages from './Languages';
 
 export default class Header extends Component {
-  state = { activeItem: 'home' }
-
+  state = { activeItem: 'home', layoutType: 'LANDSCAPE' }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+  reportWindowSize = () => {
+    if (window.innerWidth < 768) return this.layoutType = 'MOBILE';
+    else return this.layoutType = 'LANDSCAPE';
+  }
+  componentDidMount() {
+    window.addEventListener("resize", this.reportWindowSize);
+  }
   render() {
     const { activeItem } = this.state
 

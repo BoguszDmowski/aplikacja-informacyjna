@@ -5,9 +5,7 @@ import './HomePage.css';
 import LanguageContext from '../../../languageContext'
 import { Pagination } from 'semantic-ui-react'
 
-// const PaginationExamplePagination = () => (
-//   <Pagination defaultActivePage={1} totalPages={10} />
-// )
+
 class HomePage extends React.Component {
 
     static contextType = LanguageContext;
@@ -18,14 +16,14 @@ class HomePage extends React.Component {
         this.state = {
             results: null,
             categoty: null,
-            lang: null,
+            lang: { lang: this.context},
             page: 1,
         }
     }
 
     componentDidMount() {    
         this.getArticles();
-        this.setState({ lang: this.context});    
+        // this.setState({ lang: this.context});    
     }
 
     componentDidUpdate (prevProps, prevState, snapshot) {
@@ -33,7 +31,6 @@ class HomePage extends React.Component {
 
         if (prevState.lang !== this.context) this.setState({ lang: this.context});
         if (prevState.phrase !== this.state.phrase) this.getArticles();
-        console.log(this.state);
         if (prevState.page !== this.state.page) this. getArticles();
     }
     

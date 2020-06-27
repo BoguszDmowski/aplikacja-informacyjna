@@ -1,6 +1,9 @@
 import React from "react";
 import './Languages.css'
-import { Flag, Segment } from 'semantic-ui-react'
+// import { Flag, Segment } from 'semantic-ui-react'
+// import { Dropdown } from 'semantic-ui-react'
+
+
 console.log(React.version);
 const languages = ['ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn', 'co', 'cu', 
     'cz', 'de', 'eg', 'fr', 'gb', 'gr', 'hk', 'hu', 'id', 'ie', 'il', 'it', 'jp', 'kr',
@@ -25,10 +28,26 @@ class Languages extends React.Component {
         const { value } = this.state;
 
         return( 
-            <select value={value} onChange={this.onValueChange}>
-                {languages.map((lang) => (
-                    <option key={lang} value={lang}>{lang}<Segment> <Flag name={lang}/> </Segment> </option>))}   
-            </select>
+
+            <div class="custom-select">
+            <select value={value} onChange={this.onValueChange}> 
+                {languages.map((lang) => (<option key={lang} value={lang}>{lang} </option>))} 
+            </select>  
+            </div>
+            // <Segment> <Flag name={lang}/> </Segment>
+            // <Dropdown text='Language' value={value} onChange={this.onValueChange}>
+            // <Dropdown.Menu value={value} onChange={this.onValueChange}>
+            //     {languages.map(lang => (
+            //         <Dropdown.Item
+            //             key={lang}
+            //             flag={{ name: lang }}
+            //             value={lang}
+            //             text={lang}
+            //         />
+            //     ))} 
+          
+            // </Dropdown.Menu>
+            // </Dropdown>
         )
     }
 }
