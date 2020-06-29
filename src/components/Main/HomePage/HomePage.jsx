@@ -1,4 +1,4 @@
-import React, {component} from 'react';
+import React from 'react';
 import NewsList from './NewsList/NewsList';
 import NewsFiltersBar from './NewsFiltersBar/NewsFiltersBar';
 import './HomePage.css';

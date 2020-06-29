@@ -29,7 +29,7 @@ class Languages extends React.Component {
 
         return( 
 
-            <div class="custom-select">
+            <div className="custom-select">
             <select value={value} onChange={this.onValueChange}> 
                 {languages.map((lang) => (<option key={lang} value={lang}>{lang} </option>))} 
             </select>  

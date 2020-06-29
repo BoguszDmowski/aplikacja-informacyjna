@@ -61,7 +61,7 @@ const HobbyPage = () => {
 
         return () => window.removeEventListener('resize', onResize);
     }, [layoutType]);
-    console.log(results)
+    
     return (
         <div className="HobbyPage">
             <div>
@@ -73,12 +73,12 @@ const HobbyPage = () => {
                 <label> End Date:</label>
                 <DatePicker selected={endDate} maxDate={(moment().toDate())} onChange={setEndDate} dateFormat="dd-MM-yyyy"/>
             </div>
-            {layoutType !== layoutType.MOBILE ? (
+            {layoutType !== layoutType.LANDSCAPE ? (
                 <div>
                     <label> Sort by:</label>
                     <select onChange={onChange}>
                         {sortByOptions.map(({value, name}) =>(
-                            <option value={value}> {name}</option>
+                            <option key={Math.random()} value={value}> {name}</option>
                         ))}
                     </select>
                 </div>
