@@ -31,7 +31,7 @@ class HomePage extends React.Component {
 
         if (prevState.lang !== this.context) this.setState({ lang: this.context});
         if (prevState.phrase !== this.state.phrase) this.getArticles();
-        if (prevState.page !== this.state.page) this. getArticles();
+        if (prevState.page !== this.state.page) this.getArticles();
     }
     
     getArticles () {

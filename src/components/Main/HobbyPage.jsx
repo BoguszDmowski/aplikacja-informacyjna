@@ -73,16 +73,16 @@ const HobbyPage = () => {
                 <label> End Date:</label>
                 <DatePicker selected={endDate} maxDate={(moment().toDate())} onChange={setEndDate} dateFormat="dd-MM-yyyy"/>
             </div>
-            {layoutType !== layoutType.LANDSCAPE ? (
-                <div>
+            {layoutType !== layoutType.LANDSCAPE ? 
+                <>
                     <label> Sort by:</label>
                     <select onChange={onChange}>
                         {sortByOptions.map(({value, name}) =>(
                             <option key={Math.random()} value={value}> {name}</option>
                         ))}
                     </select>
-                </div>
-            ) : null}
+                </>
+             : null}
             {results ? (<NewsList key={`${startDate}${endDate}`} articles={results.articles.sort((a, b) => a.publishedAt > b.publishedAt)} />) : null}
             {results && results.totalResults ? <Pagination  
                     defaultActivePage={1}

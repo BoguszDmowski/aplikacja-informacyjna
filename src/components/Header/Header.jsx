@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment } from 'semantic-ui-react'
 // import NewsFiltersBar from '../Main/HomePage/NewsFiltersBar/NewsFiltersBar';
 import {Link} from 'react-router-dom';
 import Languages from './Languages';
