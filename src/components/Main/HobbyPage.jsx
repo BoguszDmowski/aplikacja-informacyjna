@@ -51,16 +51,15 @@ const HobbyPage = () => {
     const [layoutType, setLayoutType] = useState(getLayoutType());
     console.log(layoutType);
 
-
-    useEffect(() =>{
-        const onResize = () => {
+    const onResize = () => {
             const currentLayoutType = getLayoutType();
             if (currentLayoutType !== layoutType) setLayoutType(currentLayoutType);
         };
         window.addEventListener('resize', onResize); 
 
+    useEffect = () =>{
         return () => window.removeEventListener('resize', onResize);
-    }, [layoutType]);
+    };
     
     return (
         <div className="HobbyPage">
