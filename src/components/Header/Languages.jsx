@@ -36,7 +36,7 @@ class Languages extends React.Component {
             </div>
             // <Segment> <Flag name={lang}/> </Segment>
             // <Dropdown text='Language' value={value} onChange={this.onValueChange}>
-            // <Dropdown.Menu value={value} onChange={this.onValueChange}>
+            // <Dropdown.Menu value={value} >
             //     {languages.map(lang => (
             //         <Dropdown.Item
             //             key={lang}

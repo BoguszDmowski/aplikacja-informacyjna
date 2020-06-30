@@ -15,15 +15,16 @@ const sortByOptions = [
     { value: 'popularity', name: 'Popularity'}
 ]
 
-const layoutType = {
-    MOBILE: `MOBILE`,
-    LANDSCAPE: `LANDSCAPE`
-};
+const layoutType ={}
+    // {MOBILE: `MOBILE`,
+    // LANDSCAPE: `LANDSCAPE`}
+
 
 const getLayoutType = () => {
     if (window.innerWidth < 768) return layoutType.MOBILE;
     else return layoutType.LANDSCAPE;
 }
+
 const HobbyPage = () => {
     const [startDate, setStartDate] = useState(moment().subtract(1, 'months').toDate());
     const [endDate, setEndDate] = useState(moment().toDate());
@@ -48,19 +49,18 @@ const HobbyPage = () => {
 
     useEffect(() => { fetchArticles(); }, [fetchArticles]);
     
-    const [layoutType, setLayoutType] = useState(getLayoutType());
+    const [props, setLayoutType] = useState(getLayoutType());
     console.log(layoutType);
 
-
-    useEffect(() =>{
-        const onResize = () => {
+    const onResize = () => {
             const currentLayoutType = getLayoutType();
             if (currentLayoutType !== layoutType) setLayoutType(currentLayoutType);
         };
         window.addEventListener('resize', onResize); 
 
+    useEffect(() =>{
         return () => window.removeEventListener('resize', onResize);
-    }, [layoutType]);
+    });
     
     return (
         <div className="HobbyPage">
@@ -94,4 +94,3 @@ const HobbyPage = () => {
     );
 };
 export default HobbyPage
-

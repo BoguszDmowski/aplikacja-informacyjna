@@ -2,21 +2,17 @@ import React, { Component } from 'react'
 import { Menu, Dropdown, Segment } from 'semantic-ui-react'
 import {NavLink} from 'react-router-dom';
 import Languages from './Languages';
+import './Header.css';
 
 export default class Header extends Component {
   state = { activeItem: 'home', layoutType: 'LANDSCAPE' }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   reportWindowSize = () => {
-    if (window.innerWidth < 768) {
-      this.setState({ layoutType: "MOBILE" });
-    } else {
-      this.setState({ layoutType: "LANDSCAPE" });
-    }
+    if (window.innerWidth < 768) {this.setState({ layoutType: "MOBILE" })}
+    else {this.setState({ layoutType: "LANDSCAPE" })}
   }; 
-  //   return this.layoutType = 'MOBILE';
-  //   else return this.layoutType = 'LANDSCAPE';
-  // }
+
   componentDidMount() {
     window.addEventListener("resize", this.reportWindowSize);
     this.reportWindowSize();
@@ -30,9 +26,9 @@ export default class Header extends Component {
   
     return (
       <Segment inverted>
-        <Menu inverted secondary>
+        <Menu class="hamburger" inverted secondary>
           {layoutType === 'MOBILE' ? (
-                <Dropdown item icon="bars">
+                <Dropdown class="hamburger" item icon="">
                   <Dropdown.Menu>
                     <Dropdown.Item as={NavLink} to="/" exact>
                       Home
