@@ -32,7 +32,7 @@ export default class Header extends Component {
       <Segment inverted>
         <Menu inverted secondary>
           {layoutType === 'MOBILE' ? (
-                <Dropdown item icon="align justify">
+                <Dropdown item icon="bars">
                   <Dropdown.Menu>
                     <Dropdown.Item as={NavLink} to="/" exact>
                       Home
